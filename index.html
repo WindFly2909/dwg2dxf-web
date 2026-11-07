@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#155EEF">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; worker-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Chuyển DWG sang DXF</title>
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <header>
+    <h1 data-i18n="title">Chuyển DWG sang DXF</h1>
+    <p class="sub" data-i18n="subtitle">Dùng cho app Quản lý công trình. File được chuyển ngay trên máy bạn, không tải lên máy chủ nào.</p>
+  </header>
+
+  <section class="card" id="pickCard">
+    <ol class="steps">
+      <li data-i18n="step1">Chọn file DWG cần chuyển.</li>
+      <li data-i18n="step2">Đợi chuyển xong, bấm Tải DXF về máy.</li>
+      <li data-i18n="step3">Quay lại app, bấm Chọn file DXF và chọn file vừa tải (thường nằm trong thư mục Download).</li>
+    </ol>
+    <label class="btn primary" for="file">
+      <span data-i18n="pick">Chọn file DWG</span>
+      <input id="file" type="file" accept=".dwg,application/acad,image/vnd.dwg,application/octet-stream">
+    </label>
+  </section>
+
+  <section class="card hidden" id="workCard" aria-live="polite">
+    <p class="fname" id="fname"></p>
+    <div class="bar" id="bar"><div></div></div>
+    <p id="status" class="status"></p>
+    <a class="btn primary hidden" id="download" data-i18n="download">Tải DXF về máy</a>
+    <button class="btn" id="again" type="button" data-i18n="again">Chuyển file khác</button>
+  </section>
+
+  <details class="card">
+    <summary data-i18n="helpTitle">Hỗ trợ và lưu ý</summary>
+    <ul>
+      <li data-i18n="help1">Hỗ trợ DWG từ AutoCAD 2004 trở lên (2004, 2007, 2010, 2013, 2018). DWG đời cũ hơn có thể không chuyển được.</li>
+      <li data-i18n="help2">Lần đầu mở trang cần tải khoảng 3 MB. Những lần sau trang chạy được cả khi không có mạng.</li>
+      <li data-i18n="help3">File rất lớn có thể chuyển chậm trên máy yếu. Giữ màn hình mở cho tới khi xong.</li>
+      <li data-i18n="help4">Nếu không chuyển được, hãy lưu lại bản vẽ ở định dạng DXF hoặc DWG 2013 từ phần mềm CAD, hoặc mở bằng ứng dụng khác.</li>
+    </ul>
+  </details>
+
+  <footer>
+    <p><span data-i18n="license">Mã nguồn mở theo giấy phép GNU GPL v3. Dùng thư viện LibreDWG.</span>
+      <a href="https://github.com/WindFly2909/dwg2dxf-web" data-i18n="source">Mã nguồn</a> ·
+      <a href="LICENSE" data-i18n="licenseLink">Giấy phép</a> ·
+      <a href="THIRD_PARTY.md" data-i18n="thirdParty">Thư viện bên thứ ba</a></p>
+  </footer>
+</main>
+<script type="module" src="app.js"></script>
+</body>
+</html>
